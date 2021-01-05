@@ -1,0 +1,91 @@
+{% extends 'broker/base.html' %}
+{% load static %}
+{%load crispy_forms_tags %}
+<h1>hello world </h1>
+
+{% block content %}
+<div class='jumbotron'>
+    <form action="" method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
+        <div class="form-group row">
+            <label for="firstname" class="col-sm-2 col-form-label">Firstname:</label>
+        <div class="col-sm-10">
+            <input type="text" name="firstname" value="{{broker.firstname}}" class="form-control">
+          </div>
+        </div>
+        <div class="form-group row">
+            <label for="lastname" class="col-sm-2 col-form-label">Lastname:</label>
+        <div class="col-sm-10">
+            <input type="text" name="lastname" value="{{broker.lastname}}" class="form-control">
+          </div>
+        </div>
+        <div class="form-group row">
+            <label for="city" class="col-sm-2 col-form-label">City:</label>
+        <div class="col-sm-10">
+            <input type="text" name="city" value="{{broker.city}}" class="form-control">
+          </div>
+        </div>
+        <div class="form-group row">
+            <label for="department_name" class="col-sm-2 col-form-label">Department:</label>
+        <div class="col-sm-10">
+            <input type="text" name="department_name" value="{{broker.department_name}}" class="form-control">
+          </div>
+        </div>
+        <div class="form-group row">
+            <label for="location" class="col-sm-2 col-form-label">Location:</label>
+        <div class="col-sm-10">
+            <input type="text" name="location" value="{{broker.location}}" class="form-control">
+          </div>
+        </div>
+        <div class="form-group row">
+            <label for="phone_number" class="col-sm-2 col-form-label">Phonenumber:</label>
+        <div class="col-sm-10">
+            <input type="number" name="phone_number" value="{{broker.user.phone_number}}" class="form-control">
+          </div>
+        </div>
+        <div class="form-group row">
+            <label for="email" class="col-sm-2 col-form-label">Email:</label>
+        <div class="col-sm-10">
+            <input type="email" name="email" value="{{broker.user.email}}" class="form-control">
+          </div>
+        </div>
+        <div class="form-group row">
+            <label for="profile_pic" class="col-sm-2 col-form-label">DP:</label>
+        <div class="col-sm-10">
+            <input type="file" name="profile_pic" value="{{broker.profile_pic}}" class="form-control">
+          </div>
+        </div>
+        <div class="form-group row">
+            <label class="col-sm-2 col-form-label">WorkingDays:</label>
+        <div class="col-sm-10">
+            <div class="weekDay">
+                <br>
+                <input type="checkbox" name="checks[]" class="weekday" value='Monday'/>
+                <label for="checks[]">Monday</label>
+                <br>
+                <input type="checkbox" name="checks[]" class="weekday" value='Tuesday'/>
+                <label for="checks[]">Tuesday</label>
+                <br>
+                <input type="checkbox" name="checks[]" class="weekday" value='Wednesday'/>
+                <label for="checks[]">Wednesday</label>
+                <br>
+                <input type="checkbox" name="checks[]" class="weekday" value='Thursday'/>
+                <label for="checks[]">Thursday</label>
+                <br>
+                <input type="checkbox" name="checks[]" class="weekday" value='Friday'/>
+                <label for="checks[]">Friday</label>
+                <br>
+                <input type="checkbox" name="checks[]" class="weekday" value='Saturday'/>
+                <label for="checks[]">Saturday</label>
+                <br>
+                <input type="checkbox" name="checks[]" class="weekday" value='Sunday'/>
+                <label for="checks[]">Sunday</label>
+                <br>
+            </div>
+          </div>
+        </div>
+        <a href="{% url 'accounts:brokerprofile' %}"><button class="btn btn-danger"> edit</button></a>
+    
+      </form>
+</div>
+{% endblock %}

@@ -1,0 +1,8 @@
+{% extends 'broker/base.html' %}
+{% block content %}
+<div class='jumbotron'>
+    {% for o in chat %}
+       <h5>{{o}}</h5>
+    {% endfor %}
+</div>
+{% endblock %}

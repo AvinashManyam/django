@@ -1,0 +1,13 @@
+{% extends "customer/base.html" %}
+{% block content %}
+  <h3>History</h3>
+  {% for o in orders %}
+  <div class=jumbotron>
+    <h5>Broker : {{o.broker}} </h5>
+    <br>
+    <h5>Requested time : {{o.created_time}}</h5>
+    <br>
+    <h5>Description : {{o.description}}</h5>
+</div>
+  {% endfor %}
+{% endblock content %}

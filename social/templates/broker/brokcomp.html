@@ -1,0 +1,15 @@
+{% extends "broker/base.html" %}
+{% block content %}
+  <h4>Completed Requests</h4>
+  <br>
+  {% for o in orders %}
+    <div class=jumbotron>
+        <h5>Customer : {{o.customer}} </h5>
+        <br>
+        <h5>Requested time : {{o.created_time}}</h5>
+        <br>
+        <h5>Description : {{o.description}}</h5>
+    </div>
+    <br>
+  {% endfor %}
+{% endblock content %}

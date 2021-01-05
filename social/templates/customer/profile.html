@@ -1,0 +1,63 @@
+{% extends 'customer/base.html' %}
+{% block content %}
+<div class=jumbotron style="margin-top:25px ">
+        <div class="col-sm-8" style="width: 18rem; float: right; padding-bottom: 400px; ">
+                <img class="card-img-top" src="{{ customer.profile_pic.url }}" alt="Card image cap" >
+        </div>
+        <div>
+                <div class="form-group row">
+                        <label  class="col-sm-2 col-form-label">Username:</label>
+                        <div class="col-sm-2">
+                                <textarea" readonly class="form-control-plaintext"  >{{customer.user.username}}</textarea>
+                                <!-- <input type="text" readonly class="form-control-plaintext"  value="{{broker.user.username}}"> -->
+                        </div>
+                      </div>
+                      <div class="form-group row">
+                              <label  class="col-sm-2 col-form-label">Firstname:</label>
+                              <div class="col-sm-2">
+                                <textarea" readonly class="form-control-plaintext"  >{{customer.firstname}}</textarea>
+                                <!-- <input type="text" readonly class="form-control-plaintext"  value="{{broker.firstname}}"> -->
+                              </div>
+                      </div>
+                      <div class="form-group row">
+                              <label  class="col-sm-2 col-form-label">Lastname:</label>
+                              <div class="col-sm-2">
+                                <textarea" readonly class="form-control-plaintext"  >{{customer.lastname}}</textarea>
+                                <!-- <input type="text" readonly class="form-control-plaintext"  value="{{broker.lastname}}"> -->
+                              </div>
+                            </div>
+                      <div class="form-group row">
+                        <label  class="col-sm-2 col-form-label">City:</label>
+                        <div class="col-sm-2">
+                                <textarea" readonly class="form-control-plaintext"  >{{customer.city}}</textarea>
+                          <!-- <input type="text" readonly class="form-control-plaintext"  value="{{broker.city}}"> -->
+                        </div>
+                      </div>
+                      <div class="form-group row">
+                              <label  class="col-sm-2 col-form-label">Location:</label>
+                              <div class="col-sm-2">
+                                <textarea" readonly class="form-control-plaintext"  >{{customer.location}}</textarea>
+                                <!-- <input type="text" readonly class="form-control-plaintext"  value="{{broker.location}}"> -->
+                              </div>
+                      </div>
+
+                      <div class="form-group row">
+                              <label class="col-sm-2 col-form-label">Phonenumber:</label>
+                              <div class="col-sm-2">
+                                <textarea" readonly class="form-control-plaintext"  >{{customer.user.phone_number}}</textarea>
+                                <!-- <input type="text" readonly class="form-control-plaintext"  value="{{broker.user.phone_number}}"> -->
+                              </div>
+                            </div>
+                      <div class="form-group row">
+                        <label  class="col-sm-2 col-form-label">Email:</label>
+                        <div class="col-sm-2">
+                                <textarea" readonly class="form-control-plaintext"  >{{customer.user.email}}</textarea>
+                          <!-- <input type="text" readonly class="form-control-plaintext"  value="{{broker.user.email}}"> -->
+                        </div>
+                      </div>
+                        <div class="col-sm-2">
+                                <centre><a href="{% url 'accounts:customerprofileedit' %}"><button class="btn btn-dark" >edit</button></a></centre>
+                              </div>
+</div>
+</div>
+{% endblock %}

@@ -1,0 +1,9 @@
+{% extends 'broker/base.html' %}
+{% block content %}
+     {% if user.is_authenticated %}
+        <h6>Hello Mr.{{user.username}}</h6> 
+        <center><img src="/media/profile_pics/Broker2.jpg" alt="Girl in a jacket" width="1000" height="570"></center>
+    {% else %}
+        <h6>Welcome to Broker Please Login or sign Up!</h6>
+    {% endif %} 
+{% endblock %}

@@ -1,0 +1,22 @@
+.dropdown-menu {
+    width: 400px !important;
+} 
+.dropdown-menu>li>a {
+    word-wrap: break-word;
+    word-break: break-all;
+    white-space: normal;
+}
+.mymsg{
+    word-break: break-all;
+    text-align: justify;
+    text-align-last: right;
+    background-color:rgb(128, 232, 240);
+    padding-right: 10px;
+} 
+.yourmsg{
+    word-break: break-all;
+    text-align: justify; 
+    text-align-last: left;
+    background-color:rgb(128, 240, 128);
+    padding-right: 10px;
+ } 

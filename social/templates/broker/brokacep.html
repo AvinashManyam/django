@@ -1,0 +1,23 @@
+{% extends "broker/base.html" %}
+{% block content %}
+  <h4>Accepted Requests</h4>
+  <br>
+  {% for o in orders %}
+    <div class=jumbotron>
+      <form action="" method="POST">
+        {% csrf_token %}
+        <input type="hidden" name="connection" value="{{o.pk}}">
+        <input type="submit" class="btn btn-primary" name="completed" value="completed" style="float: right; margin-left:5px;">
+        <input type="submit" class="btn btn-primary" name="reject" value="reject" style="float: right;margin-left:5px;margin-right:5px;">
+        <a href="{% url 'accounts:brokchat' pk=o.customer.pk %}" class="btn btn-primary" style="float: right; margin-left:5px;">Chat</a>
+      </form>
+      </form>
+      <h5>customer : {{o.customer}} </h5>
+        <br>
+        <h5>Requested time : {{o.created_time}}</h5>
+        <br>
+        <h5>Description : {{o.description}}</h5>
+    </div>
+    <br>
+  {% endfor %}
+{% endblock content %}

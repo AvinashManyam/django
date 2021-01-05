@@ -1,0 +1,19 @@
+{% extends "customer/base.html" %}
+{% block content %}
+  <h4>Completed Requests</h4>
+  <br>
+  {% for o in orders %}
+    <div class=jumbotron>
+      <form action="" method="POST">
+        {% csrf_token %}
+        <a href="{% url 'accounts:review' pk=o.broker.pk %}" class="btn btn-primary" style="float: right; margin-left:5px;">Review</a>
+      </form>
+        <h5>Broker : {{o.broker}} </h5>
+        <br>
+        <h5>Requested time : {{o.created_time}}</h5>
+        <br>
+        <h5>Description : {{o.description}}</h5>
+    </div>
+    <br>
+  {% endfor %}
+{% endblock content %}

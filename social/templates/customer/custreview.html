@@ -1,0 +1,30 @@
+{% extends "customer/base.html" %}
+{% block content %}
+  <h3>Review</h3>
+    <div class=jumbotron>
+        <form action="" method="POST">
+            {% csrf_token %}
+            <input type="submit" class="btn btn-primary" name="submit" value="submit" style="float: right; margin-left:5px;">
+            <h5>You : {{customer.user.username}}</h5>
+            <br>
+            <h5>Broker : {{broker}} </h5>
+            <br>
+            <h5>Description : {{orders.description}}</h5>
+            <br>
+            <h5>TimeCreated : {{orders.created_time}}</h5>
+            <br>
+            <label for="rating"><h5>Rating for 5:</h5></label>
+            <input type="numeber" name='rating' min='1' max='5' size='1' maxlength='1' value={{review.rating}}>
+            <br>
+            {% for message in messages %}
+                <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+            {% endfor %}
+            <br>
+            <label for="description"><h5>Description:</h5></label>
+            <br>
+            <textarea rows = "5" cols = "100" name = "description">{{review.description}}</textarea><br>
+            <!-- <input type="description" name="description" minlength="200" size="100"> -->
+          </form>
+    </div>
+    <br>
+{% endblock content %}

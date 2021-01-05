@@ -1,0 +1,44 @@
+{% extends "customer/base.html" %}
+{% block content %}
+    <!-- <label for="description"><h5>Description:</h5></label> -->
+    <center>
+        <h5 style="color: cornsilk;">{{broker}}</h5>
+    </center>
+    <div class=jumbotron>
+        {% for x,y in message %}
+        {% if usr == y %}
+        <div class="mymsg" style="word-break: break-all;
+                                text-align: justify;
+                                text-align-last: left;
+                                background-color:rgb(128, 240, 128);
+                                padding-right: 10px;">
+            <!-- {{x}} -->
+            <!-- <p class="text-right">{{x}}</p> -->
+            <h5 style="text-align: left; color:rgb(9, 9, 15)">{{x}}</h5>
+            <!-- <br> -->
+        </div>
+        {% else %}
+        <div class='yourmsg' style="word-break: break-all;
+                                    text-align: justify; 
+                                    text-align-last: right;
+                                    background-color:rgb(128, 232, 240);
+                                    padding-right: 10px;">
+        <!-- {{x}} -->
+            <h5 style="text-align: right; color: black;">{{x}}</h5>
+            <!-- <br> -->
+        </div>
+        {% endif %}
+        {% endfor %}
+    </div>
+    <!-- <div class=jumbotron> -->
+        <form action="" method="POST">
+            {% csrf_token %}
+            <div class="input-group mb-3">
+                <textarea rows="1" class="form-control" placeholder="Type" aria-label="Recipient's username" aria-describedby="basic-addon2" name = "description"></textarea>
+                <div class="input-group-append">
+                    <input type="submit" class="btn btn-light" name="enter" value="enter" style="float: right; margin-left:5px;">
+                </div>
+              </div>
+            </form>
+    <!-- </div> -->
+{% endblock content %}

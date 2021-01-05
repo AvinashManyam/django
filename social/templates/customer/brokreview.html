@@ -1,0 +1,14 @@
+{% extends "customer/base.html" %}
+{% block content %}
+<h3>Reviews</h3>
+      {% for o in review %}
+      <div class=jumbotron>
+        <img src="{{ o.customer.profile_pic.url }}" class="rounded float-right" width="200" height="100" ">
+        <h5>Customer : {{o.customer}}</h5>
+        <br>
+        <h5>Rated : {{o.rating}}</h5>
+        <br>
+        <h5>Description : {{o.description}}</h5>
+      </div>
+      {% endfor %}
+{% endblock %}

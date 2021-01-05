@@ -1,0 +1,91 @@
+{% extends 'customer/base.html' %}
+{% block content %}
+    {% if user.is_authenticated %}
+    <form action="" method="POST">
+        {% csrf_token %}
+        <div class=jumbotron>
+            <div class="form-group row">
+                <div class="form-group row">
+                    <label for="department" class="col-sm-2 col-form-label">Department:</label>
+                <div class="col-sm-10">
+                    <input type="text" name="department" placeholder="Department" class="form-control">
+                  </div>
+                </div>
+                <div class="form-group row">
+                    <label for="location" class="col-sm-2 col-form-label">Location:</label>
+                <div class="col-sm-10">
+                    <input type="location" name="location" class="form-control">
+                  </div>
+                </div>
+                <div class="form-group row">
+                    <label class="col-sm-2 col-form-label">Day:</label>
+                <div class="col-sm-10">
+                    <div class="weekDay">
+                        <br>
+                        <input type="checkbox" name="checks[]" class="weekday" value='Monday'/>
+                        <label for="checks[]">Monday</label>
+                        <br>
+                        <input type="checkbox" name="checks[]" class="weekday" value='Tuesday'/>
+                        <label for="checks[]">Tuesday</label>
+                        <br>
+                        <input type="checkbox" name="checks[]" class="weekday" value='Wednesday'/>
+                        <label for="checks[]">Wednesday</label>
+                        <br>
+                        <input type="checkbox" name="checks[]" class="weekday" value='Thursday'/>
+                        <label for="checks[]">Thursday</label>
+                        <br>
+                        <input type="checkbox" name="checks[]" class="weekday" value='Friday'/>
+                        <label for="checks[]">Friday</label>
+                        <br>
+                        <input type="checkbox" name="checks[]" class="weekday" value='Saturday'/>
+                        <label for="checks[]">Saturday</label>
+                        <br>
+                        <input type="checkbox" name="checks[]" class="weekday" value='Sunday'/>
+                        <label for="checks[]">Sunday</label>
+                        <br>
+                    </div>
+                  </div>
+        </div>
+        </div>
+        <input type="submit" value="search" name="search" class='btn btn-primary'>
+        </div>
+    </form>
+    <div class=jumbotron>
+    <div class='card-deck'>
+        {% for b in brokers %}
+        <form action="" method="POST">
+        {% csrf_token %}
+        <div class='jumbotron' style="padding-left: 200px;" >
+            <div class="card" style="width: 20rem; ">
+                {% if b.profile_pic.url %}
+                <img class="card-img-top" src="{{b.profile_pic.url}}" alt="Card image cap">
+                {% endif %}
+                <div class="card-body">
+                  <h5 class="card-title">{{b.user.username}}</h5>
+                  <p class="card-text">He is a broker whose <a href="{% url 'accounts:brokreview' pk=b.pk %}" >Rating</a> is {{b.avg_rating}} given by {{b.rated_cust}} customers/customer.</p>
+                  <input type="hidden" value="{{ b }}" name="broker">
+                    <p>Purpose:</p>
+                    <textarea cols="37" name = "description" placeholder="Enter your purpose"></textarea><br>
+                    <input type="submit" class="btn btn-primary" value="connect" name="connect" style="margin-left: 100px;">
+                </div>
+              </div>
+            <!-- <input type="submit" class="btn btn-primary" value="connect" name="connect" > -->
+            <!-- <h5>Broker : {{b.user.username}}</h5>
+            <br>
+            <a href="{% url 'accounts:brokreview' pk=b.pk %}" ><h5>Rating</a> : {{b.avg_rating}} Given by {{b.rated_cust}}</h5>
+            <input type="hidden" value="{{ b }}" name="broker">
+            <br>
+            <label for="description"><h5>Description:</h5></label>
+            <br>
+            <textarea rows = "5" cols = "100" name = "description" placeholder="Enter your purpose"></textarea><br> -->
+        </div>
+        </form>
+        {% endfor %}
+    </div>
+    
+    
+  </div>
+    {% else %}
+        <h6>Welcome to Customer Please Login or sign Up!</h6>
+    {% endif %}
+{% endblock %}

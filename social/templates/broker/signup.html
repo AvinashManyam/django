@@ -1,0 +1,18 @@
+{% extends 'broker/base.html' %}
+{%load crispy_forms_tags %} 
+{% block content %}
+  <div class='jumbotron' >
+    {% if registered %}
+          <h1>thanks for registration</h1>
+        {% else %}
+          <h1>Registration</h1>
+          <form action="" method="POST">
+            {% csrf_token %}
+            {{userform|crispy}}
+            {{brokerform|crispy}}
+            <br>
+            <input type="submit" value="register">
+          </form>
+        {% endif %}
+  </div>
+{% endblock content %}

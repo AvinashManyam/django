@@ -1,0 +1,25 @@
+{% extends "broker/base.html" %}
+{% block content %}
+  <form action="" method="POST">
+    {% csrf_token %}
+    <input type="submit" class="btn btn-primary btn-lg btn-block" name="clearpage" value="clearpage">
+  </form>
+  <br>
+  <h4>Reject List</h4>
+  <br>
+  {% for o in orders %}
+    <div class=jumbotron>
+      <form action="" method="POST">
+        {% csrf_token %}
+        <input type="hidden" name="connection" value="{{o.pk}}">
+        <input type="submit" class="btn btn-primary" name="clear" value="clear" style="float: right; margin-left:5px;">
+      </form>
+        <h5>customer : {{o.customer}} </h5>
+        <br>
+        <h5>Requested time : {{o.created_time}}</h5>
+        <br>
+        <h5>Description : {{o.description}}</h5>
+    </div>
+    <br>
+  {% endfor %}
+{% endblock content %}
